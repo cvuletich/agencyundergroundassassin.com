@@ -1,3 +1,4 @@
+<pre>
 <?php
 $errors = array();
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
@@ -13,6 +14,9 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
   if (trim($_POST['assassinname']) === "") {
     array_push($errors, "Please enter an assassin name.");
   }
+  if (strlen($_POST['assassinname']) < 3) {
+    array_push($errors, "Please make sure your assassin name is at least 3 characters.");
+  }
   if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
     array_push($errors, "Please enter a valid email address.");
   }
@@ -23,23 +27,33 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     array_push($errors, "Please make sure your passwords match. ");
   }
   if (count($errors) > 0) {
+    echo "<span style=\"color: #C00; font-weight: bold;\">";
     foreach ($errors as $error) {
       echo $error . "<br />";
     }
+    echo "</span>";
   } else {
+    $player->register();
     echo "Registration Complete! <a href=\"/login.php\">Click here to Log In</a>!";
   }
 }
-?>
 
-<form method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
-  <pre>
-  First Name: <input type="text" name="firstname" value="<?php echo $_POST['firstname']; ?>" />
-  Last Name: <input type="text" name="lastname" value="<?php echo $_POST['lastname']; ?>" />
-  Assassin Name: <input type="text" name="assassinname" value="<?php echo $_POST['assassinname']; ?>" />
-  Email: <input type="email" name="email" value="<?php echo $_POST['email']; ?>" />
-  Password: <input type="password" name="password1" value="<?php echo $_POST['password1']; ?>" />
-  Re-enter Password: <input type="password" name="password2" value="<?php echo $_POST['password2']; ?>" />
-  <button type="submit">Register</button>
-  </pre>
-</form>
+if ($_SERVER['REQUEST_METHOD'] === "POST" && count($errors) > 0) {
+?>
+  <form method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
+    <h1>Register</h1>
+    First Name: <input type="text" name="firstname" value="<?php echo $_POST['firstname']; ?>" />
+    Last Name: <input type="text" name="lastname" value="<?php echo $_POST['lastname']; ?>" />
+    Assassin Name: <input type="text" name="assassinname" value="<?php echo $_POST['assassinname']; ?>" />
+    Email: <input type="email" name="email" value="<?php echo $_POST['email']; ?>" />
+    Password: <input type="password" name="password1" value="<?php echo $_POST['password1']; ?>" />
+    Re-enter Password: <input type="password" name="password2" value="<?php echo $_POST['password2']; ?>" />
+    <button type="submit">Register</button>
+
+    <a href="/">Back</a>
+  </form>
+</pre>
+
+<?php
+}
+?>

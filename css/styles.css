@@ -7,3 +7,15 @@ html {
 *, *:before, *:after {
   box-sizing: inherit;
 }
+button {
+  font-family: "Courier New", Courier, monospace;
+  margin: 4px;
+  padding: 8px;
+}
+input {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 12px;
+  margin: 4px;
+  padding: 2px;
+  width: 240px;
+}
