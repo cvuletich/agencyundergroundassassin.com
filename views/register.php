@@ -42,12 +42,13 @@ if ($_SERVER['REQUEST_METHOD'] !== "POST" || $_SERVER['REQUEST_METHOD'] === "POS
 ?>
   <form method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
     <h1>Register</h1>
-    First Name: <input type="text" name="firstname" value="<?php echo $_POST['firstname']; ?>" />
-    Last Name: <input type="text" name="lastname" value="<?php echo $_POST['lastname']; ?>" />
-    Assassin Name: <input type="text" name="assassinname" value="<?php echo $_POST['assassinname']; ?>" />
-    Email: <input type="email" name="email" value="<?php echo $_POST['email']; ?>" />
-    Password: <input type="password" name="password1" value="<?php echo $_POST['password1']; ?>" />
-    Re-enter Password: <input type="password" name="password2" value="<?php echo $_POST['password2']; ?>" />
+    <label>First Name</label> <input type="text" name="firstname" value="<?php echo $_POST['firstname']; ?>" />
+    <label>Last Name</label> <input type="text" name="lastname" value="<?php echo $_POST['lastname']; ?>" />
+    <label>Assassin Name</label> <input type="text" name="assassinname" value="<?php echo $_POST['assassinname']; ?>" />
+    <label>Email</label> <input type="email" name="email" value="<?php echo $_POST['email']; ?>" />
+    <label>Password</label> <input type="password" name="password1" value="<?php echo $_POST['password1']; ?>" />
+    <label>Re-enter Password</label> <input type="password" name="password2" value="<?php echo $_POST['password2']; ?>" />
+
     <button type="submit">Register</button>
 
     <a href="/">Back</a>
