@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
   }
 }
 
-if ($_SERVER['REQUEST_METHOD'] === "POST" && count($errors) > 0) {
+if ($_SERVER['REQUEST_METHOD'] !== "POST" || $_SERVER['REQUEST_METHOD'] === "POST" && count($errors) > 0) {
 ?>
   <form method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
     <h1>Register</h1>
