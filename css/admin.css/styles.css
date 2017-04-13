@@ -1,0 +1,26 @@
+html {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+button {
+  font-family: "Courier New", Courier, monospace;
+  margin: 4px;
+  padding: 8px;
+}
+input {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 12px;
+  margin: 4px;
+  padding: 2px;
+  width: 240px;
+}
+label {
+  display: inline-block;
+  text-align: right;
+  width: 130px;
+}

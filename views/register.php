@@ -3,28 +3,28 @@
 $errors = array();
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
   if (strtolower(end(explode("@", $_POST['email']))) !== "energybbdo.com") {
-    array_push($errors, "You must have an Energy BBDO email to play assassin.");
+    array_push($errors, "You must have an Energy BBDO email address to play assassin.");
   }
   if (trim($_POST['firstname']) === "") {
-    array_push($errors, "Please enter a first name.");
+    array_push($errors, "Enter a first name.");
   }
   if (trim($_POST['lastname']) === "") {
-    array_push($errors, "Please enter a last name.");
+    array_push($errors, "Enter a last name.");
   }
   if (trim($_POST['assassinname']) === "") {
-    array_push($errors, "Please enter an assassin name.");
+    array_push($errors, "Enter an assassin name.");
   }
   if (strlen($_POST['assassinname']) < 3) {
-    array_push($errors, "Please make sure your assassin name is at least 3 characters.");
+    array_push($errors, "Make sure your assassin name is at least 3 characters.");
   }
   if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-    array_push($errors, "Please enter a valid email address.");
+    array_push($errors, "Enter a valid email address.");
   }
   if (strlen($_POST['password1']) < 6) {
-    array_push($errors, "Please make sure your password is at least 6 characters.");
+    array_push($errors, "Make sure your password is at least 6 characters.");
   }
   if ($_POST['password1'] !== $_POST['password2']) {
-    array_push($errors, "Please make sure your passwords match. ");
+    array_push($errors, "Make sure your passwords match. ");
   }
   if (count($errors) > 0) {
     echo "<span style=\"color: #C00; font-weight: bold;\">";
@@ -33,8 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     }
     echo "</span>";
   } else {
-    $player->register();
-    echo "Registration Complete! <a href=\"/login.php\">Click here to Log In</a>!";
+    $player->add($_POST);
+    echo "Registration Complete! <a href=\"/login\">Click here to Log In</a>!";
   }
 }
 

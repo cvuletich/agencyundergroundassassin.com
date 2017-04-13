@@ -9,30 +9,35 @@ define("LIB_PATH", __DIR__ . "lib");
 define("MAILGUN_KEY", "key-124f79a09311cfc9b437effe652d0d9b");
 
 switch($host) {
+  case "dev.undergroundassassin.com":
   case "dev.agencyundergroundassassin.com":
     define("DB_HOST", "localhost");
-    define("DB_NAME", "assassin");
+    define("DB_NAME", "assassin_dev");
     define("DB_PASS", "assassin");
     define("DB_USER", "assassin_dev");
     break;
+  case "stage.undergroundassassin.com":
   case "stage.agencyundergroundassassin.com":
     define("DB_HOST", "localhost");
-    define("DB_NAME", "assassin");
+    define("DB_NAME", "assassin_stage");
     define("DB_PASS", "assassin");
-    define("DB_USER", "assassin_dev");
+    define("DB_USER", "assassin_stage");
     break;
   case "agencyundergroundassassin.com":
+  case "undergroundassassin.com":
   case "www.agencyundergroundassassin.com":
+  case "www.undergroundassassin.com":
     define("DB_HOST", "localhost");
-    define("DB_NAME", "assassin");
+    define("DB_NAME", "assassin_prod");
     define("DB_PASS", "assassin");
-    define("DB_USER", "assassin_dev");
+    define("DB_USER", "assassin_prod");
     break;
 }
 
 require("lib/API.class.php");
 require("lib/Agency.class.php");
 require("lib/DB.class.php");
+require("lib/ErrorHandler.class.php");
 require("lib/Game.class.php");
 require("lib/Player.class.php");
 
